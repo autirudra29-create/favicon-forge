@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Favicon Forge</title>
+    <meta name="description" content="A free local favicon generator for favicon, Apple Touch Icon, and PWA icons.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Favicon Forge</p>
+        <h1>Generate website icons in your browser</h1>
+        <p class="tagline">Upload one logo and create favicon, Apple Touch Icon, PWA icons, HTML tags, and a web manifest without uploading your image.</p>
+      </div>
+      <a class="repo-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+    </header>
+
+    <main class="workspace">
+      <section class="tool-panel">
+        <label id="dropZone" class="upload-zone" for="fileInput">
+          <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp">
+          <span class="upload-icon">+</span>
+          <strong>Drop an image here, or click to choose</strong>
+          <small>Supports PNG, JPG, JPEG, and WebP. Your image stays in your browser.</small>
+        </label>
+
+        <div class="preview-card">
+          <div>
+            <p class="section-label">Source Image</p>
+            <p id="sourceMeta" class="muted">No image selected yet</p>
+          </div>
+          <div class="source-preview">
+            <img id="sourcePreview" alt="Source image preview">
+            <span id="emptyPreview">Preview appears after upload</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-panel">
+        <div class="setting-group">
+          <p class="section-label">Background</p>
+          <div class="segmented" role="radiogroup" aria-label="Background mode">
+            <label><input type="radio" name="backgroundMode" value="transparent" checked>Transparent</label>
+            <label><input type="radio" name="backgroundMode" value="white">White</label>
+            <label><input type="radio" name="backgroundMode" value="custom">Custom</label>
+          </div>
+          <input id="backgroundColor" class="color-input" type="color" value="#ffffff" aria-label="Custom background color">
+        </div>
+
+        <div class="setting-group">
+          <p class="section-label">Corners</p>
+          <div class="segmented" role="radiogroup" aria-label="Corner mode">
+            <label><input type="radio" name="cornerMode" value="none" checked>Square</label>
+            <label><input type="radio" name="cornerMode" value="soft">Soft</label>
+            <label><input type="radio" name="cornerMode" value="circle">Circle</label>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="range-label" for="paddingRange">
+            <span>Padding</span>
+            <strong id="paddingValue">14%</strong>
+          </label>
+          <input id="paddingRange" type="range" min="0" max="30" value="14">
+        </div>
+
+        <div class="action-row">
+          <button id="generateButton" class="primary-button" type="button">Generate icons</button>
+          <button id="manifestButton" class="secondary-button" type="button" disabled>Download manifest</button>
+        </div>
+        <p id="statusText" class="status-text">Waiting for an image</p>
+      </section>
+
+      <section class="results-panel">
+        <div class="panel-header">
+          <div>
+            <p class="section-label">Generated Icons</p>
+            <h2>Preview and download</h2>
+          </div>
+        </div>
+        <div id="iconGrid" class="icon-grid"></div>
+      </section>
+
+      <section class="code-panel">
+        <div class="code-header">
+          <div>
+            <p class="section-label">HTML Tags</p>
+            <h2>Copy into your site head</h2>
+          </div>
+          <button id="copyHtmlButton" class="secondary-button" type="button">Copy HTML</button>
+        </div>
+        <pre id="htmlCode"></pre>
+        <div class="code-header manifest-header">
+          <div>
+            <p class="section-label">site.webmanifest</p>
+            <h2>PWA icon config</h2>
+          </div>
+          <button id="copyManifestButton" class="secondary-button" type="button">Copy manifest</button>
+        </div>
+        <pre id="manifestCode"></pre>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
